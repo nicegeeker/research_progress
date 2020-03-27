@@ -1,1 +1,2 @@
-.org
+*.org
+.DS_Store
