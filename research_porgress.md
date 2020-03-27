@@ -1,26 +1,26 @@
 
 # Table of Contents
 
-1.  [基于层次贝叶斯的空间插值方法](#orgaa2cde7)
-    1.  [问题描述](#org976e1d1)
-    2.  [思路](#orgf1080e3)
-    3.  [MCMC 方法](#orgc6b8afc)
-    4.  [讨论](#org45924fe)
-2.  [预测信号源的坐标和发送功率](#org6abecf8)
-    1.  [模型同上节，但需要获取结论是根据测量数据得到发送节点的坐标和发送功率](#org0d03339)
-    2.  [思路：](#org3fc48ca)
-        1.  [方法一：](#org00a3f12)
-        2.  [方法二：多目标学习。](#org3f0bd1f)
-    3.  [难点：](#org56a5d81)
+1.  [基于层次贝叶斯的空间插值方法](#orgfb5ccc1)
+    1.  [问题描述](#orgc9cdb9d)
+    2.  [思路](#orgef65b67)
+    3.  [MCMC 方法](#org3fff21d)
+    4.  [讨论](#orga3da166)
+2.  [预测信号源的坐标和发送功率](#orgbe10c5f)
+    1.  [模型同上节，但需要获取结论是根据测量数据得到发送节点的坐标和发送功率](#org722a3c7)
+    2.  [思路：](#orga65a46c)
+        1.  [方法一：](#org245c0b9)
+        2.  [方法二：多目标学习。](#org19ab1ad)
+    3.  [难点：](#org727681d)
 
 
 
-<a id="orgaa2cde7"></a>
+<a id="orgfb5ccc1"></a>
 
 # 基于层次贝叶斯的空间插值方法
 
 
-<a id="org976e1d1"></a>
+<a id="orgc9cdb9d"></a>
 
 ## 问题描述
 
@@ -28,17 +28,17 @@
 
 ![img](./images/001/SystemModel_Regular.png "wireless sensor network with regularly distributed sensors") 
 
-![img](./images/001/SystemModel_random.png "wireless sensor network with randomly distributed sensors") 
+![img](./images/001/SystemModel_Random.png "wireless sensor network with randomly distributed sensors") 
 
 
-<a id="orgf1080e3"></a>
+<a id="orgef65b67"></a>
 
 ## 思路
 
 能够获取的信息只有接收信号强度和感知节点的坐标，可以用两个向量表示：
 
 
-<div id="org692f17b" class="equation-container">
+<div id="org4dc0df8" class="equation-container">
 <span class="equation">
 <img src="ltximg/research_porgress_56c13bfa66b3fc541a82d92cf331a451535a70eb.png" alt="research_porgress_56c13bfa66b3fc541a82d92cf331a451535a70eb.png" />
 </span>
@@ -48,7 +48,7 @@
 </div>
 
 
-<div id="org095c0d2" class="equation-container">
+<div id="org0b82fe8" class="equation-container">
 <span class="equation">
 <img src="ltximg/research_porgress_4f97f0f25fc7cf471b94bbe10d843cdf814749f7.png" alt="research_porgress_4f97f0f25fc7cf471b94bbe10d843cdf814749f7.png" />
 </span>
@@ -137,7 +137,7 @@
 贝叶斯统计方法：首先根据先验知识，赋予待估计的参数一个无信息或者弱信息的先验分布，而后根据贝叶斯理论，提供获取的监测数据来更新参数的分布，即得到其后验分布。
 
 
-<a id="orgc6b8afc"></a>
+<a id="org3fff21d"></a>
 
 ## MCMC 方法
 
@@ -145,7 +145,7 @@
 通过该方法得到的参数分布，可以进一步采用 MCMC 方法对空间其他点（未设置感知节点）的接收功率进行预测，得到的结果也是一个概率分布，而不是一个具体的值。
 
 
-<a id="org45924fe"></a>
+<a id="orga3da166"></a>
 
 ## 讨论
 
@@ -155,29 +155,29 @@
 2.假设阴影衰落复高斯分布是一个简化，与传统方法相比更精确，但并不能完全表征实际的阴影衰落特性，如各向异性。
 
 
-<a id="org6abecf8"></a>
+<a id="orgbe10c5f"></a>
 
 # 预测信号源的坐标和发送功率
 
 
-<a id="org0d03339"></a>
+<a id="org722a3c7"></a>
 
 ## 模型同上节，但需要获取结论是根据测量数据得到发送节点的坐标和发送功率
 
 
-<a id="org3fc48ca"></a>
+<a id="orga65a46c"></a>
 
 ## 思路：
 
 
-<a id="org00a3f12"></a>
+<a id="org245c0b9"></a>
 
 ### 方法一：
 
 可以使用上节中同样的方法进行。
 
 
-<a id="org3f0bd1f"></a>
+<a id="org19ab1ad"></a>
 
 ### 方法二：多目标学习。
 
@@ -188,7 +188,7 @@
     当有新的感知数据输入时，利用训练好的模型，来预测发送功率、坐标 x 和坐标 y 的值。
 
 
-<a id="org56a5d81"></a>
+<a id="org727681d"></a>
 
 ## 难点：
 
